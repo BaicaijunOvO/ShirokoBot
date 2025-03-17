@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+    id 'application' // 添加 application 插件
+}
+
+group = 'ovo.baicaijun'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'org.eclipse.jetty:jetty-server:9.4.44.v20210927'
+    implementation 'org.eclipse.jetty.websocket:websocket-server:9.4.44.v20210927'
+    implementation 'org.eclipse.jetty.websocket:websocket-servlet:9.4.44.v20210927'
+    implementation 'org.eclipse.jetty:jetty-servlet:9.4.44.v20210927'
+    implementation 'org.json:json:20210307'
+    implementation "com.squareup.okhttp3:okhttp:4.10.0"
+    implementation 'org.yaml:snakeyaml:1.33' // 添加 snakeyaml 依赖
+//    // Jieba分词库
+//    implementation 'com.huaban:jieba-analysis:1.0.2'
+//
+//    // MongoDB Java驱动
+//    implementation 'org.mongodb:mongodb-driver-sync:4.4.0'
+}
+
+application {
+    mainClass = 'ovo.baicaijun.TouchBot.Main' // 指定主类
+}
+jar {
+    manifest {
+        attributes 'Main-Class': application.mainClass
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE // 设置重复文件处理策略
+}
+
+test {
+    useJUnitPlatform()
+}
