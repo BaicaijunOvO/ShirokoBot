@@ -16,6 +16,8 @@ public class Main {
 //        } catch (UnsupportedEncodingException e) {
 //            e.printStackTrace();
 //        }
+
+
         //测试PluginManager
         //PluginManager.init();
 

@@ -1,37 +1,27 @@
 package ovo.baicaijun.ShirokoBot.Plugins.Modules;
 
+import ovo.baicaijun.ShirokoBot.Bot.CommandChain;
 import ovo.baicaijun.ShirokoBot.Bot.MessageApi;
+import ovo.baicaijun.ShirokoBot.Bot.MessageChain;
 import ovo.baicaijun.ShirokoBot.Plugins.PluginExecutor;
 
 /**
  * @Autho BaicaijunOvO
  * @Github https://github.com/BaicaijunOvO
- * @Date 2025/3/16 下午3:43
- */
-public class Echo implements PluginExecutor {
-
+ * @Date 2025/4/4 18:14
+ */public class Echo implements PluginExecutor {
     @Override
-    public void OnMessage(String Message, long group_id, long user_id, long bot_id, long messge_id) {
-//        if (group_id == 0){
-//            MessageApi.send_private_msg(user_id,bot_id,Message);
-//            return;
-//        }
-//
-//        MessageApi.send_group_msg(group_id,bot_id,Message);
+    public void OnMessage(MessageChain messageChain) {
 
     }
 
     @Override
-    public void OnCommand(String args, long group_id, long user_id, long bot_id, long messge_id) {
-//        if (group_id == 0){
-//            MessageApi.send_private_msg(user_id,bot_id,args);
-//            return;
-//        }
-//
-//        MessageApi.send_group_msg(group_id,bot_id,args);
-        MessageApi.send_msg(group_id,user_id,bot_id,args);
-
-
+    public void OnCommand(String[] args, CommandChain commandChain) {
+        if (args.length == 0){
+            return;
+        }
+        MessageApi.send_msg(commandChain.getGroupId(),commandChain.getUserId(),commandChain.getBotId(),args[0]);
 
     }
+
 }

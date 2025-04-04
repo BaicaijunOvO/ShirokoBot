@@ -11,17 +11,6 @@ import ovo.baicaijun.ShirokoBot.Network.WebSocketServer;
  * @Tips XuFang is Gay!
  */
 public class MessageApi {
-     public static void send_private_msg(long user_id, long bot_id, String msg){
-         JSONObject obj = new JSONObject();
-         JSONObject params = new JSONObject();
-         obj.put("action","send_private_msg");
-         params.put("user_id",user_id);
-         params.put("message",msg);
-         obj.put("params",params);
-         WebSocketServer.sendMessageToClient(obj.toString());
-         Logger.info("Bot [" + bot_id + "] seed a private message to ["+ user_id +"]: " + msg);
-
-     }
     public static void send_msg(long group_id, long user_id, long bot_id, String msg){
         JSONObject obj = new JSONObject();
         JSONObject params = new JSONObject();
@@ -38,6 +27,17 @@ public class MessageApi {
         Logger.info("Bot [" + bot_id + "] seed a message to ["+ group_id +"] ["+ user_id +"]: " + msg);
 
     }
+     public static void send_private_msg(long user_id, long bot_id, String msg){
+         JSONObject obj = new JSONObject();
+         JSONObject params = new JSONObject();
+         obj.put("action","send_private_msg");
+         params.put("user_id",user_id);
+         params.put("message",msg);
+         obj.put("params",params);
+         WebSocketServer.sendMessageToClient(obj.toString());
+         Logger.info("Bot [" + bot_id + "] seed a private message to ["+ user_id +"]: " + msg);
+
+     }
     public static void send_group_msg(long group_id, long bot_id, String msg){
         JSONObject obj = new JSONObject();
         JSONObject params = new JSONObject();

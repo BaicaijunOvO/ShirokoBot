@@ -1,5 +1,6 @@
 package ovo.baicaijun.ShirokoBot.Event;
 
+import ovo.baicaijun.ShirokoBot.Bot.MessageChain;
 import ovo.baicaijun.ShirokoBot.Log.Logger;
 import ovo.baicaijun.ShirokoBot.Plugins.PluginExecutor;
 import ovo.baicaijun.ShirokoBot.Plugins.PluginManager;
@@ -16,7 +17,7 @@ public class MessageEvent {
         Logger.info("Bot [" + bot_id + "] received a " + messageType + " message from [" + user_id + "] " + "group: " + groupId + ": " + rawMessage);
         ComandTrigger.OnMessage(rawMessage,groupId,user_id,bot_id,messageId);
         for (PluginExecutor plugin : PluginManager.plugins.keySet()) {
-            plugin.OnMessage(rawMessage,groupId,user_id,bot_id,messageId);
+            plugin.OnMessage(new MessageChain(rawMessage,groupId,user_id,bot_id,messageId));
         }
     }
 
