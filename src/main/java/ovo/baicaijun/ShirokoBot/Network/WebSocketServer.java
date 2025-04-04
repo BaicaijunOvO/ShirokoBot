@@ -1,10 +1,10 @@
-package ovo.baicaijun.TouchBot.Network;
+package ovo.baicaijun.ShirokoBot.Network;
 
 import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.api.WebSocketListener;
 import org.json.JSONObject;
-import ovo.baicaijun.TouchBot.Event.MessageEvent;
-import ovo.baicaijun.TouchBot.Log.Logger;
+import ovo.baicaijun.ShirokoBot.Event.MessageEvent;
+import ovo.baicaijun.ShirokoBot.Log.Logger;
 
 /**
  * @Autho BaicaijunOvO

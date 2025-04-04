@@ -1,4 +1,4 @@
-package ovo.baicaijun.TouchBot.Plugins;
+package ovo.baicaijun.ShirokoBot.PluginTest;
 
 /**
  * @Autho BaicaijunOvO

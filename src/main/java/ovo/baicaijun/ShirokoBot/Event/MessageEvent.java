@@ -1,8 +1,8 @@
-package ovo.baicaijun.TouchBot.Event;
+package ovo.baicaijun.ShirokoBot.Event;
 
-import ovo.baicaijun.TouchBot.Log.Logger;
-import ovo.baicaijun.TouchBot.Plugins.PluginExecutor;
-import ovo.baicaijun.TouchBot.Plugins.PluginManager;
+import ovo.baicaijun.ShirokoBot.Log.Logger;
+import ovo.baicaijun.ShirokoBot.Plugins.PluginExecutor;
+import ovo.baicaijun.ShirokoBot.Plugins.PluginManager;
 
 /**
  * @Autho BaicaijunOvO

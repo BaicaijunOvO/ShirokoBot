@@ -1,10 +1,7 @@
-package ovo.baicaijun.TouchBot;
+package ovo.baicaijun.ShirokoBot;
 
-import ovo.baicaijun.TouchBot.Network.WebSocketUtil;
-import ovo.baicaijun.TouchBot.Plugins.PluginManager;
-
-import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
+import ovo.baicaijun.ShirokoBot.Network.WebSocketUtil;
+import ovo.baicaijun.ShirokoBot.Plugins.PluginManager;
 
 /**
  * @Autho BaicaijunOvO

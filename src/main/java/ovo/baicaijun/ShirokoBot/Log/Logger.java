@@ -1,7 +1,5 @@
-package ovo.baicaijun.TouchBot.Log;
+package ovo.baicaijun.ShirokoBot.Log;
 
-import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 

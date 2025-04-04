@@ -1,13 +1,11 @@
-package ovo.baicaijun.TouchBot.Plugins;
+package ovo.baicaijun.ShirokoBot.Plugins;
 
-import ovo.baicaijun.TouchBot.Log.Logger;
-import ovo.baicaijun.TouchBot.Plugins.Modules.CQTest;
-import ovo.baicaijun.TouchBot.Plugins.Modules.Echo;
-import ovo.baicaijun.TouchBot.Plugins.Modules.Randomimg;
+import ovo.baicaijun.ShirokoBot.Log.Logger;
+import ovo.baicaijun.ShirokoBot.Plugins.Modules.CQTest;
+import ovo.baicaijun.ShirokoBot.Plugins.Modules.Echo;
+import ovo.baicaijun.ShirokoBot.Plugins.Modules.Randomimg;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * @Autho BaicaijunOvO

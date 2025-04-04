@@ -1,8 +1,8 @@
-package ovo.baicaijun.TouchBot.Plugins.Modules;
+package ovo.baicaijun.ShirokoBot.Plugins.Modules;
 
-import ovo.baicaijun.TouchBot.Bot.MessageApi;
-import ovo.baicaijun.TouchBot.Bot.MessageSegment;
-import ovo.baicaijun.TouchBot.Plugins.PluginExecutor;
+import ovo.baicaijun.ShirokoBot.Bot.MessageApi;
+import ovo.baicaijun.ShirokoBot.Bot.MessageSegment;
+import ovo.baicaijun.ShirokoBot.Plugins.PluginExecutor;
 
 /**
  * @Autho BaicaijunOvO

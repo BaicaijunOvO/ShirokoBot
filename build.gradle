@@ -28,7 +28,7 @@ dependencies {
 }
 
 application {
-    mainClass = 'ovo.baicaijun.TouchBot.Main' // 指定主类
+    mainClass = 'ovo.baicaijun.ShirokoBot.Main' // 指定主类
 }
 jar {
     manifest {

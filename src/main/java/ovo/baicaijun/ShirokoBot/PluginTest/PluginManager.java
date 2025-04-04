@@ -1,6 +1,6 @@
-package ovo.baicaijun.TouchBot.PluginTest;
+package ovo.baicaijun.ShirokoBot.PluginTest;
 
-import ovo.baicaijun.TouchBot.Log.Logger;
+import ovo.baicaijun.ShirokoBot.Log.Logger;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.File;
