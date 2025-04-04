@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application' // 添加 application 插件
+    id 'maven-publish' // 用于发布到Maven仓库
 }
 
 group = 'ovo.baicaijun'
@@ -38,6 +39,45 @@ jar {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE // 设置重复文件处理策略
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+            groupId = 'ovo.baicaijun'
+            artifactId = 'shirokobot'
+            version = '1.0-SNAPSHOT'
+
+            pom {
+                name = 'ShirokoBot'
+                description = 'ShirokoBot By:BaicaijunOvO'
+                url = 'https://github.com/BaicaijunOvO/ShirokoBot'
+                licenses {
+                    license {
+                        name = 'Apache License'
+                        url = 'https://www.apache.org/licenses/'
+                    }
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name = 'ShirokoNexus'
+            def baseUrl = project.nexusUrl
+            def releasesUrl = "${baseUrl}/repository/maven-releases/"
+            def snapshotsUrl = "${baseUrl}/repository/maven-snapshots/"
+            url = project.isRelease.toBoolean() ? releasesUrl : snapshotsUrl
+            allowInsecureProtocol = true // 如果使用HTTP
+
+            credentials {
+                username = project.nexusUsername
+                password = project.nexusPassword
+            }
+        }
+    }
 }
 
 test {
