@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application' // 添加 application 插件
+    id 'maven-publish' // 用于发布到Maven仓库
 }
 
 group = 'ovo.baicaijun'
@@ -39,6 +40,8 @@ jar {
     }
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE // 设置重复文件处理策略
 }
+
+
 
 test {
     useJUnitPlatform()
