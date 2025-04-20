@@ -5,6 +5,7 @@ import org.eclipse.jetty.server.handler.ContextHandler;
 import org.eclipse.jetty.server.handler.ContextHandlerCollection;
 import org.eclipse.jetty.websocket.server.WebSocketHandler;
 import org.eclipse.jetty.websocket.servlet.WebSocketServletFactory;
+import ovo.baicaijun.ShirokoBot.Config.BotConfig;
 import ovo.baicaijun.ShirokoBot.Log.Logger;
 
 /**
@@ -15,8 +16,8 @@ import ovo.baicaijun.ShirokoBot.Log.Logger;
 public class WebSocketUtil {
     public static void init(){
 
-        Server server = new Server(5050);
-        Logger.info("websocket监听端口: 127.0.0.1:5050");
+        Server server = new Server(BotConfig.port);
+        Logger.info("websocket监听端口: 127.0.0.1:" + BotConfig.port);
 
         WebSocketHandler JoinHadler = new WebSocketHandler() {
             @Override

@@ -1,5 +1,7 @@
 package ovo.baicaijun.ShirokoBot;
 
+import ovo.baicaijun.ShirokoBot.Config.BotConfig;
+import ovo.baicaijun.ShirokoBot.Log.Logger;
 import ovo.baicaijun.ShirokoBot.Network.WebSocketUtil;
 import ovo.baicaijun.ShirokoBot.Plugins.PluginManager;
 
@@ -10,17 +12,22 @@ import ovo.baicaijun.ShirokoBot.Plugins.PluginManager;
  */
 public class Main {
     public static void main(String[] args) {
-//        try {
-//            // 设置标准输出流为 UTF-8 编码
-//            System.setOut(new PrintStream(System.out, true, "utf-8"));
-//        } catch (UnsupportedEncodingException e) {
-//            e.printStackTrace();
-//        }
+
+        Logger.info("\n ________  ___  ___  ___  ________  ________  ___  __    ________  ________  ________  _________   \n" +
+                "|\\   ____\\|\\  \\|\\  \\|\\  \\|\\   __  \\|\\   __  \\|\\  \\|\\  \\ |\\   __  \\|\\   __  \\|\\   __  \\|\\___   ___\\ \n" +
+                "\\ \\  \\___|\\ \\  \\\\\\  \\ \\  \\ \\  \\|\\  \\ \\  \\|\\  \\ \\  \\/  /|\\ \\  \\|\\  \\ \\  \\|\\ /\\ \\  \\|\\  \\|___ \\  \\_| \n" +
+                " \\ \\_____  \\ \\   __  \\ \\  \\ \\   _  _\\ \\  \\\\\\  \\ \\   ___  \\ \\  \\\\\\  \\ \\   __  \\ \\  \\\\\\  \\   \\ \\  \\  \n" +
+                "  \\|____|\\  \\ \\  \\ \\  \\ \\  \\ \\  \\\\  \\\\ \\  \\\\\\  \\ \\  \\\\ \\  \\ \\  \\\\\\  \\ \\  \\|\\  \\ \\  \\\\\\  \\   \\ \\  \\ \n" +
+                "    ____\\_\\  \\ \\__\\ \\__\\ \\__\\ \\__\\\\ _\\\\ \\_______\\ \\__\\\\ \\__\\ \\_______\\ \\_______\\ \\_______\\   \\ \\__\\\n" +
+                "   |\\_________\\|__|\\|__|\\|__|\\|__|\\|__|\\|_______|\\|__| \\|__|\\|_______|\\|_______|\\|_______|    \\|__|\n" +
+                "   \\|_________|                                                                                    \n" +
+                "                                                                                                   ");
 
 
-        //测试PluginManager
-        //PluginManager.init();
 
+        String configPath = "config.json";
+
+        BotConfig.init(configPath);
         //可用PluginManager
         PluginManager.init();
 

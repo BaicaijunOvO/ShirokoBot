@@ -1,5 +1,8 @@
 package ovo.baicaijun.ShirokoBot.Log;
 
+import ovo.baicaijun.ShirokoBot.Config.BotConfig;
+import ovo.baicaijun.ShirokoBot.Config.ConfigUtil;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -26,7 +29,9 @@ public class Logger {
     }
 
     public static void debug(String msg) {
-        System.out.println(Colors.GREEN + "[" + getTime() + "]" + Colors.YELLOW + "[DEBUG] " + Colors.YELLOW + "| " + Colors.WHITE + msg);
+        if (BotConfig.debugMode){
+            System.out.println(Colors.GREEN + "[" + getTime() + "]" + Colors.YELLOW + "[DEBUG] " + Colors.YELLOW + "| " + Colors.WHITE + msg);
+        }
     }
 
     public static void info(String msg) {
