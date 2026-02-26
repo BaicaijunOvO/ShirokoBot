@@ -113,7 +113,7 @@ public class MessageSentEvent extends Event {
      */
     public CompletableFuture<Boolean> recall() {
         if (success && messageId > 0) {
-            return AdapterManager.deleteMessage(messageId);
+            return AdapterManager.deleteMessage(groupId,userId,messageId);
         }
         return CompletableFuture.completedFuture(false);
     }

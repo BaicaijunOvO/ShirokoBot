@@ -73,7 +73,7 @@ public class OneBotV11Adapter implements BotAdapter {
     }
     
     @Override
-    public CompletableFuture<Boolean> deleteMessage(long messageId) {
+    public CompletableFuture<Boolean> deleteMessage(long groupId, long userId,long messageId) {
         return OneBotApi.deleteMessage(messageId);
     }
     

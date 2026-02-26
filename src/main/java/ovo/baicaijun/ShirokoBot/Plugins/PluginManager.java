@@ -102,13 +102,8 @@ public class PluginManager {
                 plugin.setDescriptor(descriptor);
                 plugin.setClassLoader(classLoader);
 
-                // 调用onLoad（设置插件上下文）
-                PluginLogger.setCurrentPlugin(plugin);
-                try {
-                    plugin.onLoad();
-                } finally {
-                    PluginLogger.clearCurrentPlugin();
-                }
+                // 调用onLoad
+                plugin.onLoad();
 
                 plugins.put(descriptor.getName(), plugin);
                 pluginClassLoaders.put(plugin, classLoader);
@@ -170,14 +165,9 @@ public class PluginManager {
         }
 
         try {
-            PluginLogger.setCurrentPlugin(plugin);
-            try {
-                plugin.onEnable();
-                plugin.setEnabled(true);
-                Logger.info("插件 " + plugin.getName() + " 已启用");
-            } finally {
-                PluginLogger.clearCurrentPlugin();
-            }
+            plugin.onEnable();
+            plugin.setEnabled(true);
+            Logger.info("插件 " + plugin.getName() + " 已启用");
         } catch (Exception e) {
             Logger.error("启用插件 " + plugin.getName() + " 时发生错误");
             e.printStackTrace();
@@ -193,19 +183,14 @@ public class PluginManager {
         }
 
         try {
-            PluginLogger.setCurrentPlugin(plugin);
-            try {
-                plugin.onDisable();
-                plugin.setEnabled(false);
+            plugin.onDisable();
+            plugin.setEnabled(false);
 
-                // 注销事件监听器和命令
-                EventManager.unregisterAll(plugin);
-                CommandManager.unregisterCommands(plugin);
+            // 注销事件监听器和命令
+            EventManager.unregisterAll(plugin);
+            CommandManager.unregisterCommands(plugin);
 
-                Logger.info("插件 " + plugin.getName() + " 已禁用");
-            } finally {
-                PluginLogger.clearCurrentPlugin();
-            }
+            Logger.info("插件 " + plugin.getName() + " 已禁用");
         } catch (Exception e) {
             Logger.error("禁用插件 " + plugin.getName() + " 时发生错误");
             e.printStackTrace();

@@ -3,7 +3,6 @@ package ovo.baicaijun.ShirokoBot.Plugins.Command;
 import ovo.baicaijun.ShirokoBot.Config.BotConfig;
 import ovo.baicaijun.ShirokoBot.Log.Logger;
 import ovo.baicaijun.ShirokoBot.Plugins.Plugin;
-import ovo.baicaijun.ShirokoBot.Plugins.PluginLogger;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -49,12 +48,7 @@ public class CommandManager {
         }
 
         try {
-            PluginLogger.setCurrentPlugin(command.getPlugin());
-            try {
-                return command.execute(sender, args);
-            } finally {
-                PluginLogger.clearCurrentPlugin();
-            }
+            return command.execute(sender, args);
         } catch (Exception e) {
             Logger.error("执行命令时发生错误: " + e.getMessage());
             e.printStackTrace();

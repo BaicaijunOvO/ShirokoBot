@@ -1,5 +1,6 @@
 package ovo.baicaijun.ShirokoBot.Event;
 
+import ovo.baicaijun.ShirokoBot.Config.BotConfig;
 import ovo.baicaijun.ShirokoBot.Plugins.Command.BotCommandSender;
 import ovo.baicaijun.ShirokoBot.Plugins.Command.CommandManager;
 
@@ -14,7 +15,7 @@ import ovo.baicaijun.ShirokoBot.Plugins.Command.CommandManager;
 public class ComandTrigger {
 
     public static void OnMessage(String raw_message, long groupId, long user_id, long bot_id, long message_id) {
-        if (raw_message.startsWith("/")) {
+        if (raw_message.startsWith(BotConfig.commandStart)) {
             BotCommandSender sender = new BotCommandSender(groupId, user_id, bot_id, message_id);
             CommandManager.executeCommand(sender, raw_message);
         }

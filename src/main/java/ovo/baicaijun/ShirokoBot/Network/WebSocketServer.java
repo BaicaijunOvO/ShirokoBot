@@ -2,8 +2,8 @@ package ovo.baicaijun.ShirokoBot.Network;
 
 import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.api.WebSocketListener;
+import ovo.baicaijun.ShirokoBot.Adapter.AdapterManager;
 import ovo.baicaijun.ShirokoBot.Log.Logger;
-import ovo.baicaijun.ShirokoBot.OneBot.v11.parser.MessageParser;
 
 /**
  * WebSocket服务器
@@ -23,8 +23,8 @@ public class WebSocketServer implements WebSocketListener {
 
     @Override
     public void onWebSocketText(String message) {
-        // 委托给OneBot v11解析器处理
-        MessageParser.parse(message);
+        // 委托给解析器处理
+        AdapterManager.parse(message);
     }
 
     @Override

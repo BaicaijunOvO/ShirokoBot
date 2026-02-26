@@ -82,9 +82,9 @@ public class MessageApi {
     /**
      * 撤回消息（异步）
      */
-    public static CompletableFuture<Boolean> delete_msg(long message_id, long bot_id) {
+    public static CompletableFuture<Boolean> delete_msg(long groupId, long userId,long message_id, long bot_id) {
         Logger.info("Bot [" + bot_id + "] delete a message: " + message_id);
-        return AdapterManager.deleteMessage(message_id);
+        return AdapterManager.deleteMessage(groupId,userId,message_id);
     }
 
     /**

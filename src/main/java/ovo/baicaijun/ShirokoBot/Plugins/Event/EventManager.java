@@ -2,7 +2,6 @@ package ovo.baicaijun.ShirokoBot.Plugins.Event;
 
 import ovo.baicaijun.ShirokoBot.Log.Logger;
 import ovo.baicaijun.ShirokoBot.Plugins.Plugin;
-import ovo.baicaijun.ShirokoBot.Plugins.PluginLogger;
 
 import java.lang.reflect.Method;
 import java.util.*;
@@ -110,12 +109,7 @@ public class EventManager {
         }
 
         public void callEvent(Event event) throws Exception {
-            PluginLogger.setCurrentPlugin(plugin);
-            try {
-                method.invoke(listener, event);
-            } finally {
-                PluginLogger.clearCurrentPlugin();
-            }
+            method.invoke(listener, event);
         }
 
         public EventPriority getPriority() {

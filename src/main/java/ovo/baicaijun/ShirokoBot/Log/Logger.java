@@ -1,7 +1,6 @@
 package ovo.baicaijun.ShirokoBot.Log;
 
 import ovo.baicaijun.ShirokoBot.Config.BotConfig;
-import ovo.baicaijun.ShirokoBot.Config.ConfigUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

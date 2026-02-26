@@ -57,7 +57,7 @@ public interface BotAdapter {
     /**
      * 撤回消息
      */
-    CompletableFuture<Boolean> deleteMessage(long messageId);
+    CompletableFuture<Boolean> deleteMessage(long groupId, long userId,long messageId);
     
     /**
      * 发送点赞

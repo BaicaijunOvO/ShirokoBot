@@ -5,6 +5,7 @@ import org.eclipse.jetty.server.handler.ContextHandler;
 import org.eclipse.jetty.server.handler.ContextHandlerCollection;
 import org.eclipse.jetty.websocket.server.WebSocketHandler;
 import org.eclipse.jetty.websocket.servlet.WebSocketServletFactory;
+import ovo.baicaijun.ShirokoBot.Adapter.AdapterManager;
 import ovo.baicaijun.ShirokoBot.Config.BotConfig;
 import ovo.baicaijun.ShirokoBot.Log.Logger;
 
@@ -28,7 +29,7 @@ public class WebSocketUtil {
 
         ContextHandlerCollection contextHandlerCollection = new ContextHandlerCollection();
 
-        ContextHandler joinContext = new ContextHandler("/onebot/v11/ws");
+        ContextHandler joinContext = new ContextHandler(AdapterManager.context);
         joinContext.setHandler(JoinHadler);
 
         // 将路径添加到服务器
