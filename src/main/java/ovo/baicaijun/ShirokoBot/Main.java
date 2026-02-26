@@ -1,9 +1,14 @@
 package ovo.baicaijun.ShirokoBot;
 
+import ovo.baicaijun.ShirokoBot.Adapter.AdapterManager;
 import ovo.baicaijun.ShirokoBot.Config.BotConfig;
+import ovo.baicaijun.ShirokoBot.Config.ConfigUtil;
 import ovo.baicaijun.ShirokoBot.Log.Logger;
-import ovo.baicaijun.ShirokoBot.Network.WebSocketUtil;
 import ovo.baicaijun.ShirokoBot.Plugins.PluginManager;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Autho BaicaijunOvO
@@ -28,10 +33,41 @@ public class Main {
         String configPath = "config.json";
 
         BotConfig.init(configPath);
-        //可用PluginManager
+        
+        // 初始化适配器管理器
+        try {
+            Object adapterConfigObj = ConfigUtil.getValue(configPath, "adapter");
+            String adapterType;
+            
+            if (adapterConfigObj == null) {
+                // 如果配置中没有adapter字段，使用默认值并写入配置
+                Map<String, Object> adapterConfig = new HashMap<>();
+                adapterConfig.put("type", "onebotv11");
+                ConfigUtil.updateConfig(configPath, "adapter", adapterConfig);
+                adapterType = "onebotv11";
+            } else if (adapterConfigObj instanceof Map) {
+                // 如果adapter是一个对象，获取type字段
+                @SuppressWarnings("unchecked")
+                Map<String, Object> adapterMap = (Map<String, Object>) adapterConfigObj;
+                adapterType = (String) adapterMap.getOrDefault("type", "onebotv11");
+            } else if (adapterConfigObj instanceof String) {
+                // 如果adapter直接是字符串
+                adapterType = (String) adapterConfigObj;
+            } else {
+                // 其他情况使用默认值
+                adapterType = "onebotv11";
+            }
+            
+            AdapterManager.initialize(adapterType, BotConfig.port);
+        } catch (IOException e) {
+            Logger.error("读取适配器配置失败: " + e.getMessage());
+            AdapterManager.initialize("onebotv11", BotConfig.port);
+        }
+        
+        // 初始化插件管理器
         PluginManager.init();
 
-        WebSocketUtil.init();
-
+        // 启动适配器
+        AdapterManager.start();
     }
 }

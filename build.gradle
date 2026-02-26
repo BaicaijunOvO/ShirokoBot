@@ -11,6 +11,11 @@ repositories {
     mavenCentral()
 }
 
+// 设置编译编码
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
@@ -48,7 +53,7 @@ publishing {
             from components.java
             groupId = 'ovo.baicaijun'
             artifactId = 'shirokobot'
-            version = '1.0-SNAPSHOT'
+            version = '1.1-SNAPSHOT'
 
             pom {
                 name = 'ShirokoBot'

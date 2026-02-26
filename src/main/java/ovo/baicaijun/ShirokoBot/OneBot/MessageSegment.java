@@ -1,4 +1,4 @@
-package ovo.baicaijun.ShirokoBot.Bot;
+package ovo.baicaijun.ShirokoBot.OneBot;
 
 /**
  * @Autho BaicaijunOvO

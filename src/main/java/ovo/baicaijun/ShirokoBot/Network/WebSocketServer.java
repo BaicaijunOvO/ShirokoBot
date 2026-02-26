@@ -2,16 +2,17 @@ package ovo.baicaijun.ShirokoBot.Network;
 
 import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.api.WebSocketListener;
-import org.json.JSONObject;
-import ovo.baicaijun.ShirokoBot.Event.MessageEvent;
 import ovo.baicaijun.ShirokoBot.Log.Logger;
+import ovo.baicaijun.ShirokoBot.OneBot.v11.parser.MessageParser;
 
 /**
- * @Autho BaicaijunOvO
+ * WebSocket服务器
+ * 负责WebSocket连接管理和消息转发
+ * 
+ * @Author BaicaijunOvO
  * @Github https://github.com/BaicaijunOvO
  * @Date 2025/3/16 下午2:50
  */
-
 public class WebSocketServer implements WebSocketListener {
     private static Session session;
 
@@ -21,48 +22,9 @@ public class WebSocketServer implements WebSocketListener {
     }
 
     @Override
-    public void onWebSocketText(String s) {
-        try {
-            JSONObject text = new JSONObject(s);
-            Logger.debug(text.toString());
-
-            // 处理消息事件
-            if (text.has("message_type")) {
-                MessageEvent event = null;
-                String messageType = text.getString("message_type");
-                long userId = text.getLong("user_id");
-                long selfId = text.getLong("self_id");
-                String rawMessage = text.getString("raw_message");
-
-                if ("group".equals(messageType)) {
-                    event = new MessageEvent(
-                            messageType,
-                            text.optString("sub_type", "normal"),
-                            text.getLong("message_id"),
-                            text.optLong("group_id", 0),
-                            userId,
-                            rawMessage,
-                            selfId
-                    );
-                } else if ("private".equals(messageType)) {
-                    event = new MessageEvent(
-                            messageType,
-                            text.optString("sub_type", "normal"),
-                            text.getLong("message_id"),
-                            text.optLong("group_id", 0),
-                            userId,
-                            rawMessage,
-                            selfId
-                    );
-                }
-
-            }
-
-
-        } catch (Exception e) {
-            System.err.println("消息解析失败: " + e.getMessage());
-            e.printStackTrace();
-        }
+    public void onWebSocketText(String message) {
+        // 委托给OneBot v11解析器处理
+        MessageParser.parse(message);
     }
 
     @Override

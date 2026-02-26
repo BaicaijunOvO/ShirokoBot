@@ -14,6 +14,7 @@ import java.util.Map;
 public class BotConfig {
     public static Boolean debugMode = false;
     public static int port = 8080;
+    public static String commandStart = "/";
 
     public static void init(String configPath){
 
@@ -23,7 +24,8 @@ public class BotConfig {
 
             // 2. 如果配置为空，初始化一些默认值
             if (config.isEmpty()) {
-                config.put("version", "1.1");
+                config.put("version", "1.2");
+                config.put("commandStart","/");
                 config.put("debug",false);
                 config.put("port",8080);
                 // 写入初始配置
@@ -37,6 +39,7 @@ public class BotConfig {
             debugMode = debug;
 
             port = (int) ConfigUtil.getValue(configPath,"port");
+            commandStart = ConfigUtil.getValue(configPath, "commandStart").toString();
 
             // 6. 打印当前配置
             Logger.info("当前配置: " + (ConfigUtil.readConfig(configPath).toString()));
